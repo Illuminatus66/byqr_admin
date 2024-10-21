@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts, removeProduct, logOut } from "../actions/index";
 import { useNavigate } from "react-router-dom";
-import "../styles/Dashboard.css";
+import "./Dashboard.css";
 
 const Dashboard = () => {
   const dispatch = useDispatch();

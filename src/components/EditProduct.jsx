@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useEffect, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { editProduct } from "../actions/index";
-import "../styles/EditProduct.css";
+import "./EditProduct.css";
 
 const placeholderImage =
   "https://via.placeholder.com/150/000000/FFFFFF/?text=Placeholder";
