@@ -12,6 +12,7 @@ export const logIn = (formData) => async (dispatch) => {
   try {
     console.log("logIn Action - Form Data:", formData);
     const { data } = await api.logIn(formData);
+    console.log (data);
 
     localStorage.setItem("token", data.token);
     localStorage.setItem("role", data.result.role);
