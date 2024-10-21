@@ -26,10 +26,17 @@ const Dashboard = () => {
     navigate("/");
   };
 
+  const handleAddProduct = () => {
+    navigate("/add_product");
+  };
+
   return (
     <div className="dashboard-container">
       <div className="dashboard-header">
         <h1 className="dashboard-title">Admin Dashboard</h1>
+        <button className="add-product-button" onClick={handleAddProduct}>
+          +Add Product
+        </button>
         <button className="logout-button" onClick={handleLogout}>
           Logout
         </button>

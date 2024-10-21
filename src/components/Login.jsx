@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useDispatch } from "react-router-dom";
-import { logIn } from "../actions/index"
+import { logIn } from "../actions/index";
 import "../styles/Login";
 
 const Login = () => {

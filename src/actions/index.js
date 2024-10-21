@@ -1,22 +1,29 @@
-import * as api from '../api';
-import { LOGIN, LOGOUT, FETCH_PRODUCTS, ADD_PRODUCT, REMOVE_PRODUCT, EDIT_PRODUCT } from '../constants/actionTypes';
+import * as api from "../api";
+import {
+  LOGIN,
+  LOGOUT,
+  FETCH_PRODUCTS,
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
+  EDIT_PRODUCT,
+} from "../constants/actionTypes";
 
 export const logIn = (formData) => async (dispatch) => {
   try {
     const { data } = await api.logIn(formData);
-    
-    localStorage.setItem('token', data.token);
-    localStorage.setItem('role', 'admin');
-    
-    dispatch({ type: LOGIN, payload: { token: data.token, role: 'admin' } });
+
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("role", "admin");
+
+    dispatch({ type: LOGIN, payload: { token: data.token, role: "admin" } });
   } catch (error) {
     console.log(error);
   }
 };
 
 export const logOut = () => (dispatch) => {
-  localStorage.removeItem('token');
-  localStorage.removeItem('role');
+  localStorage.removeItem("token");
+  localStorage.removeItem("role");
   dispatch({ type: LOGOUT });
 };
 

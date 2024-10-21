@@ -1,25 +1,24 @@
 import React, { useState } from "react";
-import { useSelector, useEffect, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { editProduct } from "../actions/index";
-import "../styles/AddProducts.css";
+import { addProduct } from "../actions/index";
+import "../styles/EditProduct.css";
 
-const placeholderImage =
-  "https://via.placeholder.com/150/000000/FFFFFF/?text=Placeholder";
+const placeholderImage = "https://via.placeholder.com/150/000000/FFFFFF/?text=Placeholder";
 
-const EditProduct = () => {
-  const { id } = useParams();
+const AddProduct = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
-  const [productData, setProductData] = useState(null);
-
-  useEffect(() => {
-    const product = products.find((product) => product._id === id);
-    if (product) {
-      setProductData(product);
-    }
-  }, [id, products]);
+  
+  const [productData, setProductData] = useState({
+    name: "",
+    price: "",
+    stock: "",
+    category: "",
+    description: "",
+    thumbnail: "",
+    imgs: [""],
+  });
 
   const handleChange = (e) => {
     setProductData({ ...productData, [e.target.name]: e.target.value });
@@ -31,21 +30,28 @@ const EditProduct = () => {
     setProductData({ ...productData, imgs: updatedImages });
   };
 
-  // Function to check if a URL is a valid image
+  const handleAddImageField = () => {
+    setProductData({ ...productData, imgs: [...productData.imgs, ""] });
+  };
+
+  const handleRemoveImageField = (index) => {
+    const updatedImages = productData.imgs.filter((_, i) => i !== index);
+    setProductData({ ...productData, imgs: updatedImages });
+  };
+
   const isValidImageURL = (url) => {
     return /\.(jpeg|jpg|gif|png)$/.test(url);
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(editProduct(productData));
+    dispatch(addProduct(productData));
     navigate("/dashboard");
   };
 
   return (
     <div className="edit-product-container">
-      <h2 className="edit-product-title">Edit Product</h2>
+      <h2 className="edit-product-title">Add Product</h2>
       <form onSubmit={handleSubmit} className="edit-product-form">
         <div className="form-group">
           <label>Name:</label>
@@ -114,11 +120,7 @@ const EditProduct = () => {
             className="form-input"
           />
           <img
-            src={
-              isValidImageURL(productData.thumbnail)
-                ? productData.thumbnail
-                : placeholderImage
-            }
+            src={isValidImageURL(productData.thumbnail) ? productData.thumbnail : placeholderImage}
             alt="Thumbnail Preview"
             className="image-preview"
           />
@@ -140,17 +142,33 @@ const EditProduct = () => {
                 alt={`Number ${index + 1} Preview`}
                 className="image-preview"
               />
+              {/* Button to remove an image field */}
+              {productData.imgs.length > 1 && (
+                <button
+                  type="button"
+                  className="remove-image-button"
+                  onClick={() => handleRemoveImageField(index)}
+                >
+                  -
+                </button>
+              )}
             </div>
           ))}
+
+          {/* Button to add a new image field */}
+          <button
+            type="button"
+            className="add-image-button"
+            onClick={handleAddImageField}
+          >
+            +
+          </button>
         </div>
 
-        {/* Submit button */}
-        <button type="submit" className="submit-button">
-          Update Product
-        </button>
+        <button type="submit" className="submit-button">Add Product</button>
       </form>
     </div>
   );
 };
 
-export default EditProduct;
+export default AddProduct;

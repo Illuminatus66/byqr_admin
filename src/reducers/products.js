@@ -1,4 +1,9 @@
-import { FETCH_PRODUCTS, ADD_PRODUCT, REMOVE_PRODUCT, EDIT_PRODUCT } from '../constants/actionTypes';
+import {
+  FETCH_PRODUCTS,
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
+  EDIT_PRODUCT,
+} from "../constants/actionTypes";
 
 const productReducer = (state = [], action) => {
   switch (action.type) {
