@@ -45,6 +45,7 @@ const AddProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Data:", productData);
     dispatch(addProduct(productData));
     navigate("/dashboard");
   };

@@ -13,7 +13,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("Password:", password);
     try {
       dispatch(logIn(email, password));
       navigate("/dashboard");
