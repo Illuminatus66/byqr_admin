@@ -15,7 +15,8 @@ const Login = () => {
     e.preventDefault();
     console.log("Password:", password);
     try {
-      dispatch(logIn(email, password));
+      const formData = { email, password };
+      dispatch(logIn(formData));
       navigate("/dashboard");
     } catch (err) {
       setError("Invalid credentials, please try again.");
