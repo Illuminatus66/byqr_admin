@@ -11,7 +11,7 @@ const EditProduct = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.products.products);
   const [productData, setProductData] = useState(null);
 
   useEffect(() => {

@@ -7,7 +7,7 @@ import "../styles/Dashboard.css";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.products.products);
 
   useEffect(() => {
     dispatch(fetchProducts());
