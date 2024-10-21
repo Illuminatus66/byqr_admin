@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useEffect, useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { editProduct } from "../actions/index";
 import "./EditProduct.css";
