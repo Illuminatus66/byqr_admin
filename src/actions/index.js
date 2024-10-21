@@ -10,6 +10,7 @@ import {
 
 export const logIn = (formData) => async (dispatch) => {
   try {
+    console.log("logIn Action - Form Data:", formData);
     const { data } = await api.logIn(formData);
 
     localStorage.setItem("token", data.token);

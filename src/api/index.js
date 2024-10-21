@@ -13,8 +13,11 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-export const logIn = (formData) =>
+export const logIn = (formData) => {
+  console.log("API Call - Logging In with Data:", formData);
   API.post("/user/admin/login", formData, { withCredentials: true });
+}
+  
 export const addProduct = (productData) =>
   API.post("products/admin/add", productData, { withCredentials: true });
 export const removeProduct = (id) =>
