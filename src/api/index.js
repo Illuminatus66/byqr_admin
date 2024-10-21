@@ -14,12 +14,12 @@ API.interceptors.request.use((req) => {
 });
 
 export const logIn = (formData) =>
-  API.post("admin/login", formData, { withCredentials: true });
+  API.post("/user/admin/login", formData, { withCredentials: true });
 export const addProduct = (productData) =>
-  API.post("admin/add", productData, { withCredentials: true });
+  API.post("products/admin/add", productData, { withCredentials: true });
 export const removeProduct = (id) =>
-  API.delete(`admin/delete/${id}`, { withCredentials: true });
+  API.delete(`products/admin/delete/${id}`, { withCredentials: true });
 export const editProduct = (productData) =>
-  API.patch("admin/edit", productData, { withCredentials: true });
+  API.patch("products/admin/edit", productData, { withCredentials: true });
 export const fetchProducts = () =>
-  API.get("fetchall", { withCredentials: true });
+  API.get("products/fetchall", { withCredentials: true });
