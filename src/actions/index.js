@@ -11,7 +11,7 @@ import {
 export const logIn = (formData, navigate) => async (dispatch) => {
   try {
     const { data } = await api.logIn(formData);
-    console.log (data);
+    console.log ('Logging on frontend',data.token, data.result.role);
 
     localStorage.setItem("token", JSON.stringify(data.token));
     localStorage.setItem("role", JSON.stringify(data.result.role));
