@@ -8,14 +8,15 @@ import {
   EDIT_PRODUCT,
 } from "../constants/actionTypes";
 
-export const logIn = (formData) => async (dispatch) => {
+export const logIn = (formData, navigate) => async (dispatch) => {
   try {
-    console.log("logIn Action - Form Data:", formData);
     const { data } = await api.logIn(formData);
     console.log (data);
 
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("role", data.result.role);
+    localStorage.setItem("token", JSON.stringify(data.token));
+    localStorage.setItem("role", JSON.stringify(data.result.role));
+
+    navigate("/dashboard");
 
     dispatch({ type: LOGIN, payload: { token: data.token, role: data.result.role } });
   } catch (error) {

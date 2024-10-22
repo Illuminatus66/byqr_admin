@@ -13,11 +13,8 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Password:", password);
     try {
-      const formData = { email, password };
-      dispatch(logIn(formData));
-      navigate("/dashboard");
+      dispatch(logIn({ email, password }, navigate));
     } catch (err) {
       setError("Invalid credentials, please try again.");
     }
