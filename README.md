@@ -92,6 +92,12 @@ $ npm start
 4. Changes made via the admin interface will reflect in the mobile app and other user-facing platforms.
 
 ---
+## Screenshots
+### Dashboard
+<img src='./screenshots/Dashboard.png' width='50%' />
+
+### Edit Product
+<img src='./screenshots/EditProduct.png' width='50%' />
 
 ## Contributing
 Contributions to the admin interface are welcome! Please feel free to open an issue or submit a pull request on the repository.
