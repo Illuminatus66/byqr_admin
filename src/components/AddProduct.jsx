@@ -4,12 +4,13 @@ import { useDispatch } from "react-redux";
 import { addProduct } from "../actions/index";
 import "./AddProduct.css";
 
-const placeholderImage = "https://via.placeholder.com/150/000000/FFFFFF/?text=Placeholder";
+const placeholderImage =
+  "https://via.placeholder.com/150/000000/FFFFFF/?text=Placeholder";
 
 const AddProduct = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   const [productData, setProductData] = useState({
     name: "",
     price: "",
@@ -18,6 +19,15 @@ const AddProduct = () => {
     description: "",
     thumbnail: "",
     imgs: [""],
+    brand: "",
+    frameMaterial: "",
+    weight: "",
+    wheelSize: "",
+    gearSystem: "",
+    brakeType: "",
+    suspension: "",
+    tyreType: "",
+    warranty: "",
   });
 
   const handleChange = (e) => {
@@ -108,6 +118,105 @@ const AddProduct = () => {
             className="form-textarea"
           />
         </div>
+        <div className="form-group">
+          <label>Brand:</label>
+          <input
+            type="text"
+            name="brand"
+            value={productData.brand}
+            onChange={handleChange}
+            required
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label>Frame Material:</label>
+          <input
+            type="text"
+            name="frameMaterial"
+            value={productData.frameMaterial}
+            onChange={handleChange}
+            required
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label>Weight (kg):</label>
+          <input
+            type="text"
+            name="weight"
+            value={productData.weight}
+            onChange={handleChange}
+            required
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label>Wheel Size (inches):</label>
+          <input
+            type="text"
+            name="wheelSize"
+            value={productData.wheelSize}
+            onChange={handleChange}
+            required
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label>Gear System:</label>
+          <input
+            type="text"
+            name="gearSystem"
+            value={productData.gearSystem}
+            onChange={handleChange}
+            required
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label>Brake Type:</label>
+          <input
+            type="text"
+            name="brakeType"
+            value={productData.brakeType}
+            onChange={handleChange}
+            required
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label>Suspension:</label>
+          <input
+            type="text"
+            name="suspension"
+            value={productData.suspension}
+            onChange={handleChange}
+            required
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label>Tyre Type:</label>
+          <input
+            type="text"
+            name="tyreType"
+            value={productData.tyreType}
+            onChange={handleChange}
+            required
+            className="form-input"
+          />
+        </div>
+        <div className="form-group">
+          <label>Warranty:</label>
+          <input
+            type="text"
+            name="warranty"
+            value={productData.warranty}
+            onChange={handleChange}
+            required
+            className="form-input"
+          />
+        </div>
 
         {/* Thumbnail URL with live preview */}
         <div className="form-group">
@@ -121,7 +230,11 @@ const AddProduct = () => {
             className="form-input"
           />
           <img
-            src={isValidImageURL(productData.thumbnail) ? productData.thumbnail : placeholderImage}
+            src={
+              isValidImageURL(productData.thumbnail)
+                ? productData.thumbnail
+                : placeholderImage
+            }
             alt="Thumbnail Preview"
             className="image-preview"
           />
@@ -166,7 +279,9 @@ const AddProduct = () => {
           </button>
         </div>
 
-        <button type="submit" className="submit-button">Add Product</button>
+        <button type="submit" className="submit-button">
+          Add Product
+        </button>
       </form>
     </div>
   );

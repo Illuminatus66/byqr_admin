@@ -23,14 +23,18 @@ const productReducer = (state = initialState, action) => {
     case REMOVE_PRODUCT:
       return {
         ...state,
-        products: state.products.filter((product) => product._id !== action.payload),
+        products: state.products.filter(
+          (product) => product._id !== action.payload
+        ),
         message: "Product removed successfully",
       };
     case EDIT_PRODUCT:
       return {
         ...state,
         products: state.products.map((product) =>
-          product._id === action.payload.product._id ? action.payload.product : product
+          product._id === action.payload.product._id
+            ? action.payload.product
+            : product
         ),
         message: action.payload.message,
       };
@@ -40,4 +44,3 @@ const productReducer = (state = initialState, action) => {
 };
 
 export default productReducer;
-

@@ -44,26 +44,49 @@ const Dashboard = () => {
       <div className="product-list">
         {products.map((product) => (
           <div className="product-card" key={product._id}>
-            <img src={product.thumbnail} alt={product.name} className="product-thumbnail" />
+            <img
+              src={product.thumbnail}
+              alt={product.name}
+              className="product-thumbnail"
+            />
             <div className="product-info">
               <h2 className="product-name">{product.name}</h2>
               <p className="product-price">Price: ${product.price}</p>
               <p className="product-stock">Stock: {product.stock}</p>
               <p className="product-category">Category: {product.category}</p>
-              <p className="product-description">{product.description}</p>
+              <p className="product-description">
+                Description: {product.description}
+              </p>
+              <p className="product-details">
+                Other Details: {product.brand}|{product.frameMaterial}|
+                {product.weight}kg|{product.wheelSize}inches|
+                {product.gearSystem}|{product.brakeType}|{product.suspension}|
+                {product.tyreType}|{product.warranty}
+              </p>
             </div>
 
             <div className="product-carousel">
               {product.imgs.map((img, index) => (
-                <img key={index} src={img} alt={`Number ${index + 1}`} className="carousel-image" />
+                <img
+                  key={index}
+                  src={img}
+                  alt={`Number ${index + 1}`}
+                  className="carousel-image"
+                />
               ))}
             </div>
 
             <div className="product-actions">
-              <button className="edit-button" onClick={() => handleEdit(product)}>
+              <button
+                className="edit-button"
+                onClick={() => handleEdit(product)}
+              >
                 Edit
               </button>
-              <button className="remove-button" onClick={() => handleRemove(product._id)}>
+              <button
+                className="remove-button"
+                onClick={() => handleRemove(product._id)}
+              >
                 Remove
               </button>
             </div>

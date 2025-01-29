@@ -13,7 +13,7 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-export const logIn = (formData) => 
+export const logIn = (formData) =>
   API.post("/user/admin/login", formData, { withCredentials: true });
 export const addProduct = (productData) =>
   API.post("products/admin/add", productData, { withCredentials: true });

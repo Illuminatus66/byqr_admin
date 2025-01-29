@@ -17,7 +17,10 @@ export const logIn = (formData, navigate) => async (dispatch) => {
 
     navigate("/dashboard");
 
-    dispatch({ type: LOGIN, payload: { token: data.token, role: data.result.role } });
+    dispatch({
+      type: LOGIN,
+      payload: { token: data.token, role: data.result.role },
+    });
   } catch (error) {
     console.log(error);
   }
