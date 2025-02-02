@@ -58,6 +58,58 @@ body {
   border: 1px solid #ddd;
 }
 
+.add-image-button,
+.remove-image-button {
+  margin-top: 5px;
+  padding: 6px 10px;
+  font-size: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-image-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.remove-image-button {
+  background-color: #ff0000;
+  color: white;
+}
+
+.add-image-button:hover {
+  background-color: #218838;
+}
+
+.remove-image-button:hover {
+  background-color: #cc0000;
+}
+
+.store-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.add-store-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.remove-store-button {
+  background-color: #ff0000;
+  color: white;
+}
+
+.add-store-button:hover {
+  background-color: #218838;
+}
+
+.remove-store-button:hover {
+  background-color: #cc0000;
+}
+
 .submit-button {
   padding: 10px;
   border: none;

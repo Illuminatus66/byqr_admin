@@ -28,6 +28,7 @@ const AddProduct = () => {
     suspension: "",
     tyreType: "",
     warranty: "",
+    stores: [{ name: "", latitude: "", longitude: "" }],
   });
 
   const handleChange = (e) => {
@@ -51,6 +52,28 @@ const AddProduct = () => {
 
   const isValidImageURL = (url) => {
     return /\.(jpeg|jpg|gif|png)$/.test(url);
+  };
+
+  const handleStoreChange = (index, field, value) => {
+    const updatedStores = [...productData.stores];
+    updatedStores[index][field] = value;
+    setProductData({ ...productData, stores: updatedStores });
+  };
+
+  // Add a new store field
+  const handleAddStoreField = () => {
+    setProductData({
+      ...productData,
+      stores: [
+        ...productData.stores,
+        { name: "", latitude: "", longitude: "" },
+      ],
+    });
+  };
+
+  const handleRemoveStoreField = (index) => {
+    const updatedStores = productData.stores.filter((_, i) => i !== index);
+    setProductData({ ...productData, stores: updatedStores });
   };
 
   const handleSubmit = (e) => {
@@ -79,6 +102,7 @@ const AddProduct = () => {
           <label>Price:</label>
           <input
             type="number"
+            step={0.01}
             name="price"
             value={productData.price}
             onChange={handleChange}
@@ -143,7 +167,8 @@ const AddProduct = () => {
         <div className="form-group">
           <label>Weight (kg):</label>
           <input
-            type="text"
+            type="number"
+            step={0.001}
             name="weight"
             value={productData.weight}
             onChange={handleChange}
@@ -154,7 +179,8 @@ const AddProduct = () => {
         <div className="form-group">
           <label>Wheel Size (inches):</label>
           <input
-            type="text"
+            type="number"
+            step={0.001}
             name="wheelSize"
             value={productData.wheelSize}
             onChange={handleChange}
@@ -274,6 +300,63 @@ const AddProduct = () => {
             type="button"
             className="add-image-button"
             onClick={handleAddImageField}
+          >
+            +
+          </button>
+        </div>
+
+        {/* Stores array */}
+        <div className="form-group">
+          <label>Stores:</label>
+          {productData.stores.map((store, index) => (
+            <div key={index} className="store-group">
+              <input
+                type="text"
+                placeholder="Store Name"
+                value={store.name}
+                onChange={(e) =>
+                  handleStoreChange(index, "name", e.target.value)
+                }
+                className="form-input"
+              />
+              <input
+                type="number"
+                step="any"
+                placeholder="Latitude"
+                value={store.latitude}
+                onChange={(e) =>
+                  handleStoreChange(index, "latitude", e.target.value)
+                }
+                className="form-input"
+              />
+              <input
+                type="number"
+                step="any"
+                placeholder="Longitude"
+                value={store.longitude}
+                onChange={(e) =>
+                  handleStoreChange(index, "longitude", e.target.value)
+                }
+                className="form-input"
+              />
+              {/* Button to remove a store field */}
+              {productData.stores.length > 1 && (
+                <button
+                  type="button"
+                  className="remove-store-button"
+                  onClick={() => handleRemoveStoreField(index)}
+                >
+                  -
+                </button>
+              )}
+            </div>
+          ))}
+
+          {/* Button to add a new store field */}
+          <button
+            type="button"
+            className="add-store-button"
+            onClick={handleAddStoreField}
           >
             +
           </button>
