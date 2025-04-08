@@ -60,7 +60,6 @@ const AddProduct = () => {
     setProductData({ ...productData, stores: updatedStores });
   };
 
-  // Add a new store field
   const handleAddStoreField = () => {
     setProductData({
       ...productData,
@@ -323,9 +322,9 @@ const AddProduct = () => {
                 type="number"
                 step="any"
                 placeholder="Latitude"
-                value={store.latitude}
+                value={store.lat}
                 onChange={(e) =>
-                  handleStoreChange(index, "latitude", e.target.value)
+                  handleStoreChange(index, "lat", e.target.value)
                 }
                 className="form-input"
               />
@@ -333,9 +332,9 @@ const AddProduct = () => {
                 type="number"
                 step="any"
                 placeholder="Longitude"
-                value={store.longitude}
+                value={store.long}
                 onChange={(e) =>
-                  handleStoreChange(index, "longitude", e.target.value)
+                  handleStoreChange(index, "long", e.target.value)
                 }
                 className="form-input"
               />
